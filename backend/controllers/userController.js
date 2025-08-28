@@ -27,12 +27,13 @@ const userLogin=async(req, res)=>{
             res.status(400).send({msg:"Invalid Password!"})
         }
     
-    res.status(202).send({msg:"you are successfuuly loggend in"})
+    res.status(202).send({msg:"you are successfuuly loggend in",
     User:{
         name:User.name,
         email:User.email
     }
-    
+
+    })
     
 }
 module.exports={
