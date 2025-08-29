@@ -12,6 +12,7 @@ const userRegister=async(req,res)=>{
     console.log(user);
       res.status(200).send({msg:"user successfully registered!"});
 }
+
 const userLogin=async(req, res)=>{
     const { email, password} = req.body; 
    
@@ -27,7 +28,7 @@ const userLogin=async(req, res)=>{
             res.status(400).send({msg:"Invalid Password!"})
         }
     
-    res.status(202).send({msg:"you are successfuuly loggend in",
+ res.status(202).send({msg:"you are successfuuly loggend in",
     User:{
         name:User.name,
         email:User.email

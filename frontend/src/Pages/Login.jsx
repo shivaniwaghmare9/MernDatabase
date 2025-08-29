@@ -6,6 +6,8 @@ import BackendUrl from '../Utils/BackendURL';
 import axios from "axios";
 import {ToastContainer,toast} from "react-toastify"
 import { useNavigate } from 'react-router-dom';
+
+
 const Login=()=>{
     const [input,setInput]=useState({});
     const navigate=useNavigate();
@@ -19,15 +21,15 @@ const Login=()=>{
         e.preventDefault();
         let api=`${BackendUrl}user/login`;
         const response=await axios.post(api,input);
-        if(response.status==202)
-        {
-          localStorage.setItem("username",response.User.email)
-          localStorage.setItem("useremail",response.User.name)
-          toast.success("you are loggend in")
-          navigate("/dashboard")
-        }
-         console.log(response.data.User.email);
-        
+        // if(response.status==202)
+        // {
+        //   localStorage.setItem("username",response.User.email)
+        //   localStorage.setItem("useremail",response.User.name)
+        //   toast.success("you are loggend in")
+        //   navigate("/dashboard")
+        // }
+        //console.log(response.data.User.email);
+  
     }
     return(
         <>
