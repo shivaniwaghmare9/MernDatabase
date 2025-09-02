@@ -21,14 +21,14 @@ const Login=()=>{
         e.preventDefault();
         let api=`${BackendUrl}user/login`;
         const response=await axios.post(api,input);
-        // if(response.status==202)
-        // {
-        //   localStorage.setItem("username",response.User.email)
-        //   localStorage.setItem("useremail",response.User.name)
-        //   toast.success("you are loggend in")
-        //   navigate("/dashboard")
-        // }
-        //console.log(response.data.User.email);
+        if(response.status==202)
+        {
+          localStorage.setItem("username",response.User.email)
+          localStorage.setItem("useremail",response.User.name)
+          toast.success("you are loggend in")
+          navigate("/dashboard")
+        }
+        console.log(response.data.User.email);
   
     }
     return(
