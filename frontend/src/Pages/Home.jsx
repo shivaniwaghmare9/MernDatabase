@@ -1,7 +1,28 @@
 
 import img1 from "../images/img1.jpeg"
+import { useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import BackendUrl from "../Utils/BackendURL";
 
 const Home=()=>{
+  const navigate=useNavigate();
+
+  let api=`${BackendUrl}/user/userauth`;
+  const userAutehticate=async()=>{
+    const token=localStorage.getItem("token");
+    if(token)
+    {
+      const response=await axios.post(api,null,{headers:{"x-auth-tokan":token}});
+      console.log(response);
+
+      localStorage.setItem("username",response.data.name);
+      localStorage.setItem("useremail",response.data.email);
+    }
+  }
+  useEffect(()=>{
+    userAutehticate();
+  })
 
     return(
         <>
