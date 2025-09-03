@@ -33,7 +33,7 @@ const Registration=()=>{
 
       <Form.Group className="mb-3" >
         <Form.Label>Email</Form.Label>
-        <Form.Control type="eamil"  name="email" onChange={handleInput}/>
+        <Form.Control type="email"  name="email" onChange={handleInput}/>
      </Form.Group>
 
       <Form.Group className="mb-3" >

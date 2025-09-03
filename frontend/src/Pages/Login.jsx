@@ -20,16 +20,22 @@ const Login=()=>{
     const handleSubmit=async(e)=>{
         e.preventDefault();
         let api=`${BackendUrl}user/login`;
-        const response=await axios.post(api,input);
-        if(response.status==202)
+        try {
+          const response=await axios.post(api,input);
+        if(response.status===202)
         {
-          localStorage.setItem("username",response.User.email)
-          localStorage.setItem("useremail",response.User.name)
+          localStorage.setItem("username",response.data.User.email);
+          localStorage.setItem("useremail",response.data.User.name);
           toast.success("you are loggend in")
           navigate("/dashboard")
         }
         console.log(response.data.User.email);
-  
+        } catch (error) {
+          console.error("Login error:", error);
+            const errorMsg = error.response?.data?.message || "Invalid login credentials.";
+           toast.error(errorMsg);
+        }
+        
     }
     return(
         <>
@@ -40,7 +46,7 @@ const Login=()=>{
 
       <Form.Group className="mb-3" >
         <Form.Label>Email</Form.Label>
-        <Form.Control type="eamil"  name="email" onChange={handleInput}/>
+        <Form.Control type="email"  name="email" onChange={handleInput}/>
      </Form.Group>
 
       <Form.Group className="mb-3" >
